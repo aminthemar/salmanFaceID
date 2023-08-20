@@ -1,0 +1,1 @@
+powershell -command "& .\windows_startup.ps1"
