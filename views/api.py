@@ -21,7 +21,7 @@ def predictFace():
             f.write(base64.b64decode(image_data))
         result = faceID.findMatch(image_name)
     except Exception as e:
-        print("exception:", e)
+        print("exception 1:", e)
 
     return jsonify({"result": result})
 

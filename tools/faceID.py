@@ -29,11 +29,15 @@ class FaceID(Singleton):
                     self.labels.append(personnel["id"])
             print(self.labels)
         except Exception as e:
-            print("exception:", e)
+            print("exception 2:", e)
     
     def findMatch(self, image_path):
         input_image = face_recognition.load_image_file(image_path)
-        unknown_encoding = face_recognition.face_encodings(input_image)[0]
+        unknown_encoding = face_recognition.face_encodings(input_image)
+        if(len(unknown_encoding) < 1):
+            return None
+        else:
+            unknown_encoding = unknown_encoding[0]
         matches = face_recognition.compare_faces(self.encodings, unknown_encoding)
         face_distances = face_recognition.face_distance(self.encodings, unknown_encoding)
         best_match_index = np.argmin(face_distances)
